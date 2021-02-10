@@ -4,5 +4,12 @@
 #include <iostream>
 
 int main() {
-    // Решение тут
+    //Решение тут
+    int number;
+    for(number=1; number+1>number; ++number);
+    std::cout<<"Max"<<number<<std::endl;
+    for(number=1; number-1<number; --number);
+    std::cout<<"Min"<<number<<std::endl;
+
+    return 0;
 }
