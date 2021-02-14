@@ -5,11 +5,9 @@
 
 int main() {
     //Решение тут
-    int number;
-    for(number=1; number+1>number; ++number);
-    std::cout<<"Max"<<number<<std::endl;
-    for(number=1; number-1<number; --number);
-    std::cout<<"Min"<<number<<std::endl;
-
+    int number=1;
+    while(number+1>1)
+        number*=2;
+    std::cout<<"Minimum:"<<number<<std::endl<<"Maximum:"<<number-1;
     return 0;
 }
