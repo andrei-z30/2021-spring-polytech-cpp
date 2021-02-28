@@ -3,17 +3,30 @@
 
 #include <iostream>
 
+int degree(int num) {
+    int extent = 1;
+    while (num) {
+        extent *= 10;
+        num -= 1;
+    }
+    return extent;
+}
+
 int main() {
     // Решение тут
-    int number, base, extent = 1, sum = 0;
+    int number, base, sum = 0, i = 0;
     std::cout << "Enter number:";
     std::cin >> number;
     std::cout << "Enter base: ";
     std::cin >> base;
     while (number > 0) {
-        sum += extent * (number % 10);
-        extent *= base;
-        number /= 10;
+        sum += degree(i) * (number % base);
+
+        if (number % base > 9)
+            i += 2;
+        else
+            i += 1;
+        number /= base;
     }
     std::cout << sum;
     return 0;
