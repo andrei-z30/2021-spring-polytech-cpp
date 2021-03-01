@@ -3,31 +3,45 @@
 
 #include <iostream>
 
-int degree(int num) {
-    int extent = 1;
-    while (num) {
-        extent *= 10;
-        num -= 1;
+void Output_Number(int sum, int output_number, int cnt) {
+    while (cnt-- > 0) {
+        if (output_number % 10 == 2) {
+            std::cout << char(sum % 100 + 55);
+            sum /= 100;
+        } else {
+            std::cout << char(sum % 10 + 48);
+            sum /= 10;
+        }
+        output_number /= 10;
+
+
     }
-    return extent;
 }
 
 int main() {
     // Решение тут
-    int number, base, sum = 0, i = 0;
+    int number, base, sum = 0, output_number = 0, cnt = 0;
     std::cout << "Enter number:";
     std::cin >> number;
     std::cout << "Enter base: ";
     std::cin >> base;
     while (number > 0) {
-        sum += degree(i) * (number % base);
-
-        if (number % base > 9)
-            i += 2;
+        sum += (number % base);
+        if ((number / base) % base > 9)
+            sum *= 100;
         else
-            i += 1;
+            sum *= 10;
+        cnt++;
+        if (number % base > 9)
+            output_number += 2;
+        else
+            output_number += 1;
+        output_number *= 10;
         number /= base;
     }
-    std::cout << sum;
+    sum /= 10;
+    output_number /= 10;
+    Output_Number(sum, output_number, cnt);
+
     return 0;
 }
