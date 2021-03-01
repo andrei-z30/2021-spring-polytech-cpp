@@ -3,7 +3,28 @@
 
 #include <iostream>
 
+void ConvertToNewBase(int num, int base);
+
 int main() {
-    // Решение тут
+    int num{0}, base{0};
+    std::cout << "Number:";
+    std::cin >> num;
+    std::cout << "Base:";
+    std::cin >> base;
+
+    ConvertToNewBase(num, base);
+
     return 0;
+}
+
+void ConvertToNewBase(int num, int base) {
+    while (num != 0) {
+        int bit = num % base;
+        num = num / base;
+        if (bit > 9)
+            bit += 55;
+        else
+            bit += 48;
+        std::cout << char(bit);
+    }
 }
