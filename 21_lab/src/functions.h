@@ -1,6 +1,6 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-// Объявления функций тут
+int min_value_in_array (int array[], int size);
 
 #endif // FUNCTIONS_H
