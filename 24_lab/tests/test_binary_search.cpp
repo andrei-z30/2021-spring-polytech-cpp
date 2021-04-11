@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include <vector>
+#include "binary_search.h"
 
 TEST(testBinarySearch, empty) {
     int array[] = {};

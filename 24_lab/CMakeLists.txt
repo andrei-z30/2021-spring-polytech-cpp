@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 # Library target
 add_library(${project_name} STATIC)
-target_sources(${project_name} PRIVATE src/*исходники*)
+target_sources(${project_name} PRIVATE src/binary_search.cpp)
 target_include_directories(${project_name} PUBLIC src)
 
 # Test target
