@@ -4,6 +4,7 @@
 TEST(testLengthString, Zero) {
     char str[] = "";
     EXPECT_EQ(lenStr(str), 0);
+    EXPECT_EQ(lenStr(nullptr), -1);
 }
 
 TEST(testLengthString, Single) {

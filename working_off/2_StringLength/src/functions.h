@@ -1,6 +1,6 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-int lenStr(char str[]);
+int lenStr(const char str[]);
 
 #endif // FUNCTIONS_H
