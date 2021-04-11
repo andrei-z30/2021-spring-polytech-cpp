@@ -1,9 +1,9 @@
 #include "functions.h"
 
-int averageArray(int array[], int size) {
-    int average = 0;
+float averageArray(const int array[], int size) {
+    float average = 0;
     for (int i = 0; i < size; ++i) {
-        average += array[i];
+        average += static_cast<float>(array[i]);
     }
-    return average/size;
+    return average / static_cast<float>(size);
 }

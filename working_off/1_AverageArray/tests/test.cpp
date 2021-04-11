@@ -23,4 +23,8 @@ TEST(testAverageArray, ManyValue) {
     array[1] = 30;
     array[2] = -20;
     EXPECT_EQ(averageArray(array, size), -10);
+    array[0] = 10;
+    array[1] = 11;
+    size = 2;
+    EXPECT_EQ(averageArray(array, size), 10.5);
 }
