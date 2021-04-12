@@ -1,6 +1,15 @@
 #include "linked_list.h"
 #include <iostream>
 
+void print(List &list) {
+    ListNode *print_list = list.head;
+    while (print_list->next != nullptr) {
+        std::cout << print_list->data << "->";
+        print_list = print_list->next;
+    }
+    std::cout << print_list->data << "->[x]" << std::endl;
+}
+
 List duplicate(List &list) {
     List list_duplicate {};
     ListNode *ptr = list.head;
@@ -10,10 +19,6 @@ List duplicate(List &list) {
         ptr = ptr->next;
     }
     return list_duplicate;
-}
-
-void print(List &list) {
- 	// решение тут
 }
 
 unsigned int size(List &list) {
@@ -50,21 +55,42 @@ void add(List &list, int value) {
 }
 
 bool compare(List &list_a, List &list_b) {
-    ListNode *ptr_a = list_a.head;
-    ListNode *ptr_b = list_b.head;
-    while (ptr_a != nullptr || ptr_b != nullptr) {
-        if (ptr_a->data != ptr_b->data) {
+    ListNode *copy_a = list_a.head;
+    ListNode *copy_b = list_b.head;
+    while (copy_a->next != nullptr && copy_b->next != nullptr) {
+        if (copy_a->data != copy_b->data)
             return false;
-        }
-        ptr_a = ptr_a->next;
-        ptr_b = ptr_b->next;
+        copy_a = copy_a->next;
+        copy_b = copy_b->next;
     }
     return true;
 }
 
-//List merge(List &list_a, List &list_b) {
-//
-//}
+List merge(List &list_a, List &list_b) {
+    ListNode *copy_a = list_a.head;
+    ListNode *copy_b = list_b.head;
+    List list_l{};
+    while (copy_a != nullptr || copy_b != nullptr) {
+        if (copy_a->data < copy_b->data && copy_a != nullptr && copy_b != nullptr) {
+            add(list_l, copy_a->data);
+            copy_a = copy_a->next;
+        }
+        if (copy_b->data < copy_a->data && copy_b != nullptr && copy_a != nullptr) {
+            add(list_l, copy_b->data);
+            copy_b = copy_b->next;
+
+        }
+        if (copy_a == nullptr && copy_b != nullptr) {
+            add(list_l, copy_b->data);
+            copy_b = copy_b->next;
+        }
+        if (copy_b == nullptr && copy_a != nullptr) {
+            add(list_l, copy_a->data);
+            copy_a = copy_a->next;
+        }
+    }
+    return list_l;
+}
 
 List concat(List &list_a, List &list_b) {
     List list_concat {};
