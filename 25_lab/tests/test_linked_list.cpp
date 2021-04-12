@@ -73,7 +73,6 @@ TEST(testLinkedList, merge) {
     for(auto& val: {2, 5, 6, 8, 9}) add(lst_b, val);
     for(auto& val: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}) add(lst_c, val);
     auto merged_lst = merge(lst_a, lst_b);
-    print(lst_a);
     EXPECT_TRUE(compare(merged_lst, lst_c));
 
     delete_list(lst_a);
