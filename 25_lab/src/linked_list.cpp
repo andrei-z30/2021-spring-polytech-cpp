@@ -11,7 +11,7 @@ void print(List &list) {
 }
 
 List duplicate(List &list) {
-    List list_duplicate {};
+    List list_duplicate{};
     ListNode *ptr = list.head;
     while (ptr != nullptr) {
         add(list_duplicate, ptr->data);
@@ -31,18 +31,16 @@ unsigned int size(List &list) {
     return size;
 }
 
-
 void delete_list(List &list) {
-    while (list.head != nullptr){
+    while (list.head != nullptr) {
         ListNode *temp = list.head;
         list.head = list.head->next;
         delete temp;
     }
 }
 
-
 void add(List &list, int value) {
-    auto* new_node = new ListNode{value, nullptr};
+    auto *new_node = new ListNode{value, nullptr};
     if (list.head == nullptr) {
         list.head = new_node;
     } else {
@@ -78,7 +76,6 @@ List merge(List &list_a, List &list_b) {
         if (copy_b->data < copy_a->data && copy_b != nullptr && copy_a != nullptr) {
             add(list_l, copy_b->data);
             copy_b = copy_b->next;
-
         }
         if (copy_a == nullptr && copy_b != nullptr) {
             add(list_l, copy_b->data);
@@ -93,14 +90,14 @@ List merge(List &list_a, List &list_b) {
 }
 
 List concat(List &list_a, List &list_b) {
-    List list_concat {};
+    List list_concat{};
     ListNode *ptr_a = list_a.head;
     ListNode *ptr_b = list_b.head;
-    while(ptr_a != nullptr) {
+    while (ptr_a != nullptr) {
         add(list_concat, ptr_a->data);
         ptr_a = ptr_a->next;
     }
-    while(ptr_b != nullptr) {
+    while (ptr_b != nullptr) {
         add(list_concat, ptr_b->data);
         ptr_b = ptr_b->next;
     }
