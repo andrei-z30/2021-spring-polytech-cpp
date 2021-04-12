@@ -46,6 +46,9 @@ TEST(testLinkedList, compare) {
     EXPECT_FALSE(compare(lst_a, lst_c));
     EXPECT_FALSE(compare(lst_b, lst_c));
 
+    add(lst_b, 10);
+    EXPECT_FALSE(compare(lst_a, lst_b));
+
     delete_list(lst_a);
     delete_list(lst_b);
     delete_list(lst_c);
