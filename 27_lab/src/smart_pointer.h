@@ -4,42 +4,43 @@
 template<typename T>
 class SmartPointer {
     T *ptr;
-public:
-    static unsigned int COUNT;
+    int *count;
 
-    explicit SmartPointer(T *ptr_) {
-        ptr = ptr_;
-        ++COUNT;
+public:
+
+    SmartPointer() : ptr(nullptr), count(nullptr) {}
+
+    explicit SmartPointer(T *ptr_) : ptr(ptr_) {
+        count = new int(1);
     }
 
-    SmartPointer(const SmartPointer<T> &object) {
-        this->ptr = object.ptr;
-        ++COUNT;
+    SmartPointer(const SmartPointer<T> &right) {
+        if (right.ptr) {
+            ptr = right.ptr;
+            count = right.count;
+            ++*right.count;
+        }
     }
 
     ~SmartPointer() {
-        --COUNT;
-        if (!COUNT)
+        if (ptr && !--*count) {
             delete ptr;
-    }
-
-    SmartPointer& operator=(const SmartPointer &right) {
-        if (this == &right) {
-            return *this;
+            delete count;
+            ptr = nullptr;
         }
-        this->ptr = right.ptr;
     }
 
-    T& operator*() {
+    T &operator*() const {
         return *ptr;
     }
 
-    T* operator->() {
+    T *operator->() const {
         return ptr;
     }
-};
 
-template<typename T>
-unsigned int SmartPointer<T>::COUNT = 0;
+    int GetCount() {
+        return *count;
+    }
+};
 
 #endif //INC_27_LAB_SMART_POINTER_H

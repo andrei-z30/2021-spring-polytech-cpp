@@ -7,7 +7,7 @@ project(${project_name})
 set(CMAKE_CXX_STANDARD 20)
 
 # Library target
-add_library(${project_name} STATIC src/smart_pointer.cpp src/smart_pointer.h)
+add_library(${project_name} STATIC src/smart_pointer.h src/smart_pointer.cpp)
 target_sources(${project_name} PRIVATE)
 target_include_directories(${project_name} PUBLIC src)
 
